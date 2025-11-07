@@ -1,0 +1,45 @@
+#include<stdio.h>
+
+int main() {
+     
+   FILE *file;
+    char name[40];
+    char sect[20];
+
+    file = fopen("students.txt", "w");
+    if (file == NULL) {
+        printf("Error oepning file for writing!!\n");
+        return 1;
+
+    } else {
+
+    printf(" Enter Complete Name: \n");
+    fgets(name, sizeof(name), stdin);
+    printf("Section: \n");
+    fgets(sect, sizeof(sect), stdin);
+
+    fprintf(file, "Name: %s", name);
+    fprintf(file, "Section: %s", sect);
+    printf("Information successfully saved to student.txt\n");
+    fclose(file);
+    
+    }
+
+    file = fopen("students.txt", "r");
+    if(file == NULL) {
+        printf("Error opening file for reading!! \n");
+        return 1;
+    } else {
+
+    char text[100];
+    char lol[100];
+    fgets(text, sizeof(text), file);
+    printf("Name: %s\n", text);
+    fgets(lol, sizeof(lol), file);
+    printf("Section: %s\n", lol);
+    fclose(file);
+    return 0;
+    }
+
+    
+}
